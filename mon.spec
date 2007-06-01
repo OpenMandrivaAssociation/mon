@@ -1,8 +1,8 @@
-%define version 0.99.2
+%define version 1.0.0pre5
 %define moncgi_version 1.52
-%define release 5mdk
-%define name    mon
-%define realname        Mon
+%define release %mkrel 1
+%define name mon
+%define realname Mon
 
 Summary: A general-purpose resource monitoring system
 Name: %{name}
@@ -20,7 +20,6 @@ Buildroot: %{_tmppath}/%{name}-%{version}-%{release}-root/
 # (blino) Authen::PAM use is catched in an eval, but mandatory
 Requires: perl-Authen-PAM
 Requires: fping
-PreReq: rpm-helper
 %define _requires_exceptions perl(Filesys::DiskSpace)\\|perl(Statistics::Descriptive)\\|perl(SNMP)\\|perl(IO::File)\\|perl(LWP::Parallel::UserAgent)\\|perl(-Dopt)\\|perl(Net::SNPP)
 
 %description
