@@ -1,4 +1,4 @@
-%define version 1.0.0pre5
+%define version 1.2.0
 %define moncgi_version 1.52
 %define release %mkrel 1
 %define name mon
@@ -8,13 +8,13 @@ Summary: A general-purpose resource monitoring system
 Name: %{name}
 Version: %{version}
 Release: %{release}
-Source0: ftp://ftp.kernel.org/pub/software/admin/mon/%{name}-%{version}.tar.bz2
+Source0: ftp://ftp.kernel.org/pub/software/admin/mon/%{name}-%{version}.tar.gz
 Source1: %{name}.cf
 Source2: ftp://ftp.kernel.org/pub/software/admin/mon/contrib/cgi-bin/mon.cgi/%{name}.cgi-%{moncgi_version}.tar.bz2
 Source3: ftp://ftp.kernel.org/pub/software/admin/mon/contrib/all-alerts.tar.bz2
-Patch0: mon-0.99.1-init.patch
+Patch0: mon-1.2.0-init.patch
 Url: http://www.kernel.org/software/mon/
-License: GPL
+License: GPLv2+
 Group: System/Servers
 Buildroot: %{_tmppath}/%{name}-%{version}-%{release}-root/
 # (blino) Authen::PAM use is catched in an eval, but mandatory
@@ -100,8 +100,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f alerts.README
 %defattr(-,root,root)
-%doc CHANGES COPYING CREDITS COPYRIGHT README INSTALL TODO doc/README.* 
-%doc KNOWN-PROBLEMS VERSION  utils mon.lsm
+%doc CHANGES CREDITS COPYRIGHT README INSTALL TODO doc/README.* 
+%doc KNOWN-PROBLEMS VERSION utils/*
 %doc etc/*.cf etc/example.m4 etc/example.monshowrc clients/{skymon,batch-example}
 %doc mon.cgi-1.52/
 %dir %config(noreplace) %{_sysconfdir}/mon
