@@ -16,6 +16,7 @@ Patch0: mon-1.2.0-init.patch
 Url: http://www.kernel.org/software/mon/
 License: GPLv2+
 Group: System/Servers
+Buildroot: %{_tmppath}/%{name}-%{version}-%{release}-root/
 # (blino) Authen::PAM use is catched in an eval, but mandatory
 Requires: perl-Authen-PAM
 Requires: fping
