@@ -1,6 +1,6 @@
 %define version 1.2.0
 %define moncgi_version 1.52
-%define release %mkrel 3
+%define release %mkrel 4
 %define name mon
 %define realname Mon
 
