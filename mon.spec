@@ -1,6 +1,6 @@
 %define version 1.2.0
 %define moncgi_version 1.52
-%define release %mkrel 5
+%define release %mkrel 6
 %define name mon
 %define realname Mon
 
@@ -115,7 +115,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/moncmd
 %{_bindir}/skymon          
 %{_libdir}/mon
-%attr(02555,root,uucp) %{_libdir}/mon/mon.d/dialin.monitor.wrap
+%attr(02555,root,dialout) %{_libdir}/mon/mon.d/dialin.monitor.wrap
 %dir %{_var}/lib/mon
 %dir %{_var}/lib/mon/state.d
 %dir %{_var}/lib/mon/log.d
