@@ -46,51 +46,51 @@ export RPM_OPT_FLAGS="$RPM_OPT_FLAGS -DUSE_VENDOR_CF_PATH=1"
 %make -C mon.d
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
-mkdir -p $RPM_BUILD_ROOT/%{_bindir}
-install -m 755 mon $RPM_BUILD_ROOT/%{_bindir}
-install -m 755 clients/moncmd $RPM_BUILD_ROOT/%{_bindir}
-install -m 755 clients/monshow $RPM_BUILD_ROOT/%{_bindir}
-install -m 755 clients/skymon/skymon $RPM_BUILD_ROOT/%{_bindir}
+mkdir -p %{buildroot}/%{_bindir}
+install -m 755 mon %{buildroot}/%{_bindir}
+install -m 755 clients/moncmd %{buildroot}/%{_bindir}
+install -m 755 clients/monshow %{buildroot}/%{_bindir}
+install -m 755 clients/skymon/skymon %{buildroot}/%{_bindir}
 
 # man
-mkdir -p $RPM_BUILD_ROOT%{_mandir}/{man1,man8}
-install -m 644 doc/*.1 $RPM_BUILD_ROOT%{_mandir}/man1
-install -m 644 doc/*.8 $RPM_BUILD_ROOT%{_mandir}/man8
+mkdir -p %{buildroot}%{_mandir}/{man1,man8}
+install -m 644 doc/*.1 %{buildroot}%{_mandir}/man1
+install -m 644 doc/*.8 %{buildroot}%{_mandir}/man8
 
-mkdir -p $RPM_BUILD_ROOT/%{_libdir}/mon/alert.d
-install -m 755 alert.d/* $RPM_BUILD_ROOT/%{_libdir}/mon/alert.d
-find alerts/  -type f ! -regex ".*~" ! -regex ".*README"  -exec install -m 755 {} $RPM_BUILD_ROOT/%{_libdir}/mon/alert.d  \;
+mkdir -p %{buildroot}/%{_libdir}/mon/alert.d
+install -m 755 alert.d/* %{buildroot}/%{_libdir}/mon/alert.d
+find alerts/  -type f ! -regex ".*~" ! -regex ".*README"  -exec install -m 755 {} %{buildroot}/%{_libdir}/mon/alert.d  \;
 
-mkdir -p $RPM_BUILD_ROOT/%{_var}/lib/mon/state.d
-mkdir -p $RPM_BUILD_ROOT/%{_var}/lib/mon/log.d
+mkdir -p %{buildroot}/%{_var}/lib/mon/state.d
+mkdir -p %{buildroot}/%{_var}/lib/mon/log.d
 
-mkdir -p $RPM_BUILD_ROOT/%{_libdir}/mon/mon.d
-install -m 755 mon.d/*.monitor $RPM_BUILD_ROOT/%{_libdir}/mon/mon.d
-install -m 555 mon.d/dialin.monitor.wrap $RPM_BUILD_ROOT/%{_libdir}/mon/mon.d
+mkdir -p %{buildroot}/%{_libdir}/mon/mon.d
+install -m 755 mon.d/*.monitor %{buildroot}/%{_libdir}/mon/mon.d
+install -m 555 mon.d/dialin.monitor.wrap %{buildroot}/%{_libdir}/mon/mon.d
 
-#chmod 644 $RPM_BUILD_ROOT/%{_libdir}/mon/mon.d/{Makefile,*.c}
+#chmod 644 %{buildroot}/%{_libdir}/mon/mon.d/{Makefile,*.c}
 
-mkdir -p $RPM_BUILD_ROOT/%{_sysconfdir}/mon
-install -m 644 %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/mon/mon.cf
-install -m 644 etc/auth.cf $RPM_BUILD_ROOT%{_sysconfdir}/mon/auth.cf
-echo "# user: passwd" > $RPM_BUILD_ROOT%{_sysconfdir}/mon/userfile
+mkdir -p %{buildroot}/%{_sysconfdir}/mon
+install -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/mon/mon.cf
+install -m 644 etc/auth.cf %{buildroot}%{_sysconfdir}/mon/auth.cf
+echo "# user: passwd" > %{buildroot}%{_sysconfdir}/mon/userfile
 
 
-mkdir -p $RPM_BUILD_ROOT%{_initrddir}
-cp -f etc/S99mon $RPM_BUILD_ROOT%{_initrddir}/mon
+mkdir -p %{buildroot}%{_initrddir}
+cp -f etc/S99mon %{buildroot}%{_initrddir}/mon
 
-mkdir -p $RPM_BUILD_ROOT/%{_var}/www/cgi-bin/
+mkdir -p %{buildroot}/%{_var}/www/cgi-bin/
 mv mon.cgi-%{moncgi_version}/mon.cgi mon.cgi
-install -m 755 mon.cgi $RPM_BUILD_ROOT/%{_var}/www/cgi-bin/
+install -m 755 mon.cgi %{buildroot}/%{_var}/www/cgi-bin/
 
 # doc
 chmod 644 {README*,doc/README*}
 echo "%doc `find alerts/  -type f ! -regex ".*~" -name "*README" | xargs`"> alerts.README
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %post
 %_post_service mon
