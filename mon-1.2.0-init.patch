@@ -1,0 +1,60 @@
+--- mon-1.2.0/etc/S99mon	2007-05-03 11:50:47.000000000 -0700
++++ mon-1.2.0/etc/S99mon.new	2007-09-06 00:51:26.000000000 -0700
+@@ -1,14 +1,12 @@
+ #!/bin/sh
+ #
+-# start/stop the mon server
+-#
+-# You probably want to set the path to include
+-# nothing but local filesystems.
++# mon   This shell script takes care of starting and stopping mon.
+ #
+ # chkconfig: 2345 99 10
+ # description: mon system monitoring daemon
+ # processname: mon
+ # config: /etc/mon/mon.cf
++# config: /etc/mon/auth.cf
+ # pidfile: /var/run/mon.pid
+ #
+ PATH=/bin:/usr/bin:/sbin:/usr/sbin
+@@ -17,28 +15,38 @@ export PATH
+ # Source function library.
+ . /etc/rc.d/init.d/functions
+ 
++[ -x /usr/bin/mon ] || exit 0
++
+ # See how we were called.
+ case "$1" in
+     start)
+ 	echo -n "Starting mon daemon: "
+-	daemon /usr/sbin/mon -f -l -c /etc/mon/mon.cf
++	daemon /usr/bin/mon -f -l -c /etc/mon/mon.cf -f
++	 RETVAL=$?
+ 	echo
+ 	touch /var/lock/subsys/mon
++	[ $RETVAL -eq 0 ] && touch /var/lock/subsys/mon
+ 	;;
+     stop)
+ 	echo -n "Stopping mon daemon: "
+ 	killproc mon
++	 RETVAL=$?
+ 	echo
+ 	rm -f /var/lock/subsys/mon
++	[ $RETVAL -eq 0 ] && rm -f /var/lock/subsys/mon
+ 	;;
+     status)
+     	status mon
+ 	;;
+     restart)
++    	$0 stop
++    	$0 start
++	;;
++    reload)
+     	killall -HUP mon
+ 	;;
+     *)
+-    	echo "Usage: mon {start|stop|status|restart}"
++    	echo "Usage: $0 {start|stop|status|restart|reload}"
+ 	exit 1
+ esac
+ 
