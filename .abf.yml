@@ -1,5 +1,4 @@
 sources:
-  "all-alerts.tar.bz2:"	9a49f4e09f7e4ae564a6987e9683dc8b2f83408f
-  "mon-1.2.0.tar.gz:"	e8040a1a4cc53ecf98167614c06411a1e29dbd8c
-  "mon.cf:"	caca9056b8f42c49cf683d3bfda71b138929256d
-  "mon.cgi-1.52.tar.bz2:"	667dd427e252b89aeece41b18b8149985fbe9263
+  "all-alerts.tar.bz2": 9a49f4e09f7e4ae564a6987e9683dc8b2f83408f
+  "mon-1.2.0.tar.gz": e8040a1a4cc53ecf98167614c06411a1e29dbd8c
+  "mon.cgi-1.52.tar.bz2": 667dd427e252b89aeece41b18b8149985fbe9263
