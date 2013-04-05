@@ -22,6 +22,7 @@ Group:		System/Servers
 # (blino) Authen::PAM use is catched in an eval, but mandatory
 Requires:	perl-Authen-PAM
 Requires:	fping
+BuildRequires: glibc-devel
 
 %description
 Mon is a general-purpose resource monitoring system.  It can be used
