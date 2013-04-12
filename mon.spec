@@ -44,9 +44,8 @@ required, the mon server will not need to be changed.
 %build
 %serverbuild
 export RPM_OPT_FLAGS="%{optflags} -DUSE_VENDOR_CF_PATH=1"
-export LIBS=-ltirpc
 
-%make -C mon.d 
+%make -C mon.d LDLIBS=-ltirpc
 
 %install
 mkdir -p %{buildroot}/%{_bindir}
