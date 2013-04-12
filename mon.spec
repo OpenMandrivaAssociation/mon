@@ -23,7 +23,7 @@ Group:		System/Servers
 Requires:	perl-Authen-PAM
 Requires:	fping
 BuildRequires: glibc-devel
-
+BuildRequires:	tirpc-devel
 %description
 Mon is a general-purpose resource monitoring system.  It can be used
 to monitor network service availability, server problems,
