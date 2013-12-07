@@ -10,7 +10,7 @@
 Summary:	A general-purpose resource monitoring system
 Name:		mon
 Version:	1.2.0
-Release:	14
+Release:	15
 License:	GPLv2+
 Group:		System/Servers
 Url:		http://www.kernel.org/software/mon/
