@@ -39,7 +39,7 @@ required, the mon server will not need to be changed.
 
 %prep
 %setup -q -a 2 -a 3
-%apply_patches
+%autopatch -p1
 
 %build
 %serverbuild
