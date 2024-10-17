@@ -13,7 +13,7 @@ Version:	1.2.0
 Release:	24
 License:	GPLv2+
 Group:		System/Servers
-Url:		http://www.kernel.org/software/mon/
+Url:		https://www.kernel.org/software/mon/
 Source0:	ftp://ftp.kernel.org/pub/software/admin/mon/%{name}-%{version}.tar.gz
 Source1:	%{name}.cf
 Source2:	ftp://ftp.kernel.org/pub/software/admin/mon/contrib/cgi-bin/mon.cgi/%{name}.cgi-%{moncgi_version}.tar.bz2
