@@ -19,6 +19,7 @@ Source1:	%{name}.cf
 Source2:	ftp://ftp.kernel.org/pub/software/admin/mon/contrib/cgi-bin/mon.cgi/%{name}.cgi-%{moncgi_version}.tar.bz2
 Source3:	ftp://ftp.kernel.org/pub/software/admin/mon/contrib/all-alerts.tar.bz2
 Patch0:		mon-1.2.0-init.patch
+BuildRequires:	make
 BuildRequires:	pkgconfig(libtirpc)
 # (blino) Authen::PAM use is catched in an eval, but mandatory
 Requires:	perl-Authen-PAM
